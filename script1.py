@@ -6,6 +6,7 @@ import pandas as pd
 volcanoes_data = pd.read_csv("Volcanoes-USA.txt")
 
 #create an object of the Map
+#This also signifies the starting position of the map when loaded
 map = fl.Map(location = [48.082, -121.6233], zoom_start = 4, tiles = 'Stamen Terrain')
 
 
@@ -15,5 +16,5 @@ for latitude,longitude,name in zip(volcanoes_data["LAT"], volcanoes_data["LON"],
 
 
 
-
+#save and load the map object into the html file in the same directory
 map.save(outfile = 'test.html')
