@@ -11,16 +11,15 @@ map = fl.Map(location = [48.082, -121.6233], zoom_start = 4, tiles = 'Stamen Ter
 
 def colorFinder(elev):
     if elev in range(0, 1000):
-        color = "green"
+        return "green"
     elif elev in range(1000, 3000):
-        color = "orange"
+        return "orange"
     else:
-        color = "red"
-    return color
+        return "red"
 
 #loop through and assign the values in the data set to the object of map and assign markers
 for latitude,longitude,name,elevation in zip(volcanoes_data["LAT"], volcanoes_data["LON"], volcanoes_data["NAME"], volcanoes_data["ELEV"]):
-    map.add_child(fl.Marker(location=[latitude, longitude], popup=name,color = colorFinder(elevation)))
+    map.add_child(fl.Marker(location=[latitude, longitude], popup=name,icon= fl.Icon(color = colorFinder(elevation))))
 
 
 
